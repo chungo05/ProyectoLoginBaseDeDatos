@@ -15,8 +15,21 @@ const bcrypt = require('bycrypt');
 const app = express();
 // definimos el port donde estará nuestro servidor
 const PORT = 3000; // SI NO FUNCIONA EL PORT ES PORQUE DEBE DE SER 5500
+// Definimos la lentitud del hasheo
+const saltRounds = 10;
+// Ruta segura a la base de datos
+const dbPath = path.join(__dirname, 'data', 'LaBase.sqlite')
 
 
+// -- CONECTAR A LA BASE DE DATOS --
+// Creamos una nueva conexión a nuestro acrhivo de base de datos
+const db = new sqlite33.Database(dbPath, (err) => {
+    if (err) {
+        console.error('Error al conectar a la base de datos', err.message);   
+    } else {
+        console.log('Conectado exitosamente a la base de datos');
+    }
+});
 
 
 // CONFIGURAR LOS MIDDLEWARES O SEA LOS AYUDANTES DE LA APP
@@ -35,7 +48,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 // -----------
 // AQUI IRAN LAS RUTAS/LOGICA DE LA APP "LAS RECETAS"
 // Aqui es donde pondremos nuestro app.post('/registrar y asi)
+app.post('/registrar', (req, res) => {
+    console.log('Datos recibidos en /registrar:');
+    // recibimos los datos del formulario
+    // usamos req.body, const y los names que definimos en registro
+    const { usuario, pass1, pass2 } = req.body;
 
+    // Verificamos el usuario existente
+    // usamos const sqlSelect, la preparamos
+    const sqlSelect = "SELECT Usuario FROM Usuarios WHERE Usuario = ?";
+
+    // db.get y recibimos el usuario, err y fila en parentesis 
+    db.get(sqlSelect, [usuario], (err, fila) => {
+    // 1 if si sale err, res.send
+        if(err){
+            return res.send("Error al guardar el usuario en la base de datos");
+        }
+    });
+
+    
+
+    // 2  si la fila existe, res.send usuario ya existe, decir que mande otro
+
+
+    // 3 la verificación de contraseña de manera local
+
+});
 
 
 
