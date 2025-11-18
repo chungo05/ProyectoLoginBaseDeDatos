@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> ¡Bienvenido, aqui puedes iniciar sesión!</h1>
+    
+    <!--
+    Primero haremos el form
+    Crearas el form con un metodo post
+    Primero un label for = usuario select> Seleccionar usuario: < label
+    select name= usuario id="UsuarioSelect" required>
+        option value="" disable selected> cargando usuarios.. < option
+    select
+    -->
+    <form action="/login" method="POST">
+        <label for="usuarioSelect"> Selecciona tu usuario: </label>
+        <select name="usuario" id="UsuarioSelect" required>
+            <option value="" disabled selected> cargando usuarios...</option>
+        </select>
+
+    <!--
+    Arriba creamos la lista de usuarios, ahora creamos en donde se pone la contraseña
+    label for contraseña
+    input password
+    button sumbit
+    -->
+    <label for="password"> Escribe tu contraseña</label>
+    <input type="password" name="password" placeholder="Aqui tu contraseña" required>
+    <button type="sumbit">Enviar contraseña</button>
+    </form>
+</body>
+</html>
