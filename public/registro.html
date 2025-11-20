@@ -1,4 +1,99 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - Windows XP</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+
+    <style>
+        body {
+            background-color: #fff; /* Fondo clásico */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Tahoma', sans-serif; /* Fuente típica de XP */
+        }
+        .window {
+            width: 400px; /* Un poco más ancha que el login */
+        }
+        .field-row-stacked {
+            margin-bottom: 12px;
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box; /* Para que el padding no rompa el ancho */
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end; /* Botones a la derecha */
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        
+        <div class="title-bar">
+            <div class="title-bar-text">Instalación de Nuevo Usuario</div>
+            <div class="title-bar-controls">
+                <button aria-label="Help"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body">
+            
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://win98icons.alexmeub.com/icons/png/users-1.png" alt="icono" style="margin-right: 10px; width: 32px; height: 32px;">
+                <p style="margin: 0;">Por favor, rellene los datos para crear su cuenta en el sistema.</p>
+            </div>
+
+            <form action="/registrar" method="POST">
+                
+                <fieldset>
+                    <legend>Información de Cuenta</legend>
+                    
+                    <div class="field-row-stacked">
+                        <label for="usuario">Nombre de Usuario:</label>
+                        <input type="text" name="usuario" id="usuario" required placeholder="Ej. Massimo">
+                    </div>
+                </fieldset>
+
+                <fieldset style="margin-top: 10px;">
+                    <legend>Seguridad</legend>
+
+                    <div class="field-row-stacked">
+                        <label for="pass1">Contraseña:</label>
+                        <input type="password" name="pass1" id="pass1" required>
+                    </div>
+
+                    <div class="field-row-stacked">
+                        <label for="pass2">Confirmar Contraseña:</label>
+                        <input type="password" name="pass2" id="pass2" required>
+                    </div>
+                </fieldset>
+
+                <div class="actions">
+                    <button type="button" onclick="window.location.href='/login.html'">Cancelar</button>
+                    <button type="submit">Registrar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +101,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> ¡Bienvenido al registro, ingresa tus datos! </h1>
-        <!--  Aqui esta el form o sea el contenedor de los elementos del registro y el boton de envio -->
-        <form action="Registrar" method="POST"> <!-- form es el contenedor y method el tipo de envio -->
-            <!--  aqui el usuario --- aqui la contrasena --- aqui la confirmacion de la contrasena -->
+     <h1> ¡Bienvenido al registro, ingresa tus datos! </h1>
+          Aqui esta el form o sea el contenedor de los elementos del registro y el boton de envio 
+        <form action="Registrar" method="POST"> <!-- form es el contenedor y method el tipo de envio 
+              aqui el usuario --- aqui la contrasena --- aqui la confirmacion de la contrasena 
             <input type="text" name="usuario" placeholder="Ingresa Usuario"> 
 
             <input type="password" name="pass1" placeholder="Ingresa contraseña">  
@@ -19,6 +114,6 @@
             <button type="submit"> Registrar</button>
 
 
-        </form>
+        </form> 
 </body>
-</html>
+</html> -->
