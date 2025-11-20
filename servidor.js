@@ -100,6 +100,28 @@ app.post('/registrar', (req, res) => {
     });
 });
 
+// nueva receta: procesar el login
+app.post('/login', (req, res) => {
+    console.log("intento de login recibido...")
+    //1.- Recibimos los datos del formulario
+    // usamos el name que le pusimos en html en {} y req.body
+    const { }
+
+    // hacemos la consulta de select usuario, clave from y where
+
+    // hacemos el db.get (consulta, [usuario] (err, fila))
+        // Error
+
+        // Comparar contraseña
+        // Usamos bcrypt.compare para ver si 'password' coincide con 'fila.ClaveHash'
+        // Es pareceida al hash, reciba password fila.claveHash (err, coinciden)
+            // error
+            // coinciden bienvenido con fila.Usuario
+                //else fallo la contraseña
+
+});
+
+
 // --- NUEVA FUNCION: OBTENER LA LISTA DE USUARIOS ---
 // Esta ruta sera para llenar la lista desplegable del login
 // El navegador lo llamara autojmaticamente al cargar la pagina
