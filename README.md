@@ -34,13 +34,19 @@ git clone https://github.com/TU_USUARIO/ProyectoLoginBaseDeDatos.git
 cd ProyectoLoginBaseDeDatos
 ```
 2. Instala las dependencias:
-```npm install```
+```bash
+npm install
+```
 
-3. Inicia el servidor
-```node servidor.js```
+3. Inicia el servidor:
+```bash
+node servidor.js
+```
 
-4. Abre en tu navegador
-```http://localhost:3000```
+4. Abre en tu navegador:
+```bash
+http://localhost:3000
+```
 
 ## Estructura del proyecto actual
 ProyectoLoginBaseDeDatos/
