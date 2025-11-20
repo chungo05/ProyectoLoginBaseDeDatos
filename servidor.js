@@ -105,20 +105,37 @@ app.post('/login', (req, res) => {
     console.log("intento de login recibido...")
     //1.- Recibimos los datos del formulario
     // usamos el name que le pusimos en html en {} y req.body
-    const { }
+    const { usuario, password } = req.body
 
     // hacemos la consulta de select usuario, clave from y where
-
+    const sql = "SELECT Usuario, ClaveHash FROM Usuarios WHERE Usuario = ?"
     // hacemos el db.get (consulta, [usuario] (err, fila))
+    db.get (sql, [usuario], (err, fila) => {
         // Error
-
+        if (err){
+            return res.send("error de servidor " + err.message);
+        }
+        if (!fila){
+            return res.send("Usuario no encontrado, Registre el usuario primero")
+        }
         // Comparar contraseña
         // Usamos bcrypt.compare para ver si 'password' coincide con 'fila.ClaveHash'
         // Es pareceida al hash, reciba password fila.claveHash (err, coinciden)
             // error
             // coinciden bienvenido con fila.Usuario
-                //else fallo la contraseña
+                //else fallo la contraseña        
+        bcrypt.compare(password, fila.ClaveHash, (err, coincide) => {
+            if (err){
+                return res.send("Hubo un error al verificar contraseña " + err.message);
+            }
+            if (coincide){
+                return res.send(`Bienvenido, ${usuario}, HAS INICIADO SESIÓN`);
+            } else {
+                return res.send('Contraseña incorrecta');
+            }
+        });
 
+    }); 
 });
 
 
