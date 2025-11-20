@@ -3,42 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
 </head>
+
+<style>
+        body {
+            background-color: #ffffff; /* El clásico verde azulado de Windows */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .window {
+            width: 650px; /* Ancho fijo para la ventana */
+        }
+        /* Un poco de espacio entre los elementos del formulario */
+        .field-row {
+            margin-bottom: 10px;
+        }
+        
+        input, select {
+            width: 100%;
+        }
+        button {
+            margin-top: 15px;
+        }
+    </style>
+
+
 <body>
-    <h1> ¡Bienvenido, aqui puedes iniciar sesión!</h1>
+
+<div class="window">
+        
+        <div class="title-bar">
+            <div class="title-bar-text">Iniciar Sesión</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body">
+            
+            <p style="text-align: center;">Bienvenido, identifíquese.</p>
+
+            <form action="/login" method="POST">
+                
+                <div class="field-row-stacked">
+                    <label for="usuarioSelect">Usuario:</label>
+                    <select name="usuario" id="usuarioSelect" required>
+                        <option value="" disabled selected>Cargando usuarios...</option>
+                    </select>
+                </div>
+
+                <div class="field-row-stacked">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <div style="text-align: right; margin-top: 15px;">
+                    <button type="submit">Aceptar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+  <!-- <h1> ¡Bienvenido, aqui puedes iniciar sesión!</h1>
     
-    <!--
+    
     Primero haremos el form
     Crearas el form con un metodo post
     Primero un label for = usuario select> Seleccionar usuario: < label
     select name= usuario id="UsuarioSelect" required>
         option value="" disable selected> cargando usuarios.. < option
     select
-    -->
+    
     <form action="/login" method="POST">
         <label for="usuarioSelect"> Selecciona tu usuario: </label>
         <select name="usuario" id="usuarioSelect" required>
             <option value="" disabled selected> cargando usuarios...</option>
         </select>
 
-    <!--
+    
     Arriba creamos la lista de usuarios, ahora creamos en donde se pone la contraseña
     label for contraseña
     input password
     button sumbit
-    -->
+    
         <label for="password">Contraseña:</label>
         <input type="password" name="password" placeholder="Aqui tu contraseña" required>
         <button type="submit">Entrar</button>
     </form>
 
-    <!--
+    
     Ahora haras el script
     esperamos a que la pagina cargue
     -->
-    <!-- Primero esperamos a que la pagina cargue completamente-->
-    <script>
+    <!-- Primero esperamos a que la pagina cargue completamente -->
+
+<script>
         document.addEventListener('DOMContentLoaded', ()=>{
         // 2 buscamos la caja del select por ID
             const listaDesplegable = document.getElementById('usuarioSelect');
